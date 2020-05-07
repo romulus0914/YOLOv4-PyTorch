@@ -105,7 +105,7 @@ class PANet(nn.Module):
         downstream_feature3 = self.downstream_conv3(torch.cat([features[0], self.resample4_3(downstream_feature4)], dim=1))
 
         upstream_feature4 = self.upstream_conv4(torch.cat([self.resample3_4(downstream_feature3), downstream_feature4], dim=1))
-        upstream_feature5 = self.upstream_conv5(torch.cat([self.resample4_5(downstream_feature4), downstream_feature5], dim=1))
+        upstream_feature5 = self.upstream_conv5(torch.cat([self.resample4_5(upstream_feature4), downstream_feature5], dim=1))
 
         return [downstream_feature3, upstream_feature4, upstream_feature5]
 
